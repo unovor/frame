@@ -1,0 +1,19 @@
+[package]
+name = "safe-mix"
+version = "1.0.1"
+authors = ["Parity Technologies <admin@parity.io>"]
+description = "Implementation of the Collective Coin Flip algorithm"
+documentation = "https://github.com/paritytech/safe-mix"
+homepage = "https://github.com/paritytech/safe-mix"
+repository = "https://github.com/paritytech/safe-mix"
+readme = "README.md"
+keywords = ["collective", "coin", "flip", "mixer"]
+categories = []
+license = "Apache-2.0"
+
+[build-dependencies]
+rustc_version = "0.2"
+
+[features]
+default = ["std"]
+std = []

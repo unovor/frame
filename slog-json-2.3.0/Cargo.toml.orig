@@ -1,0 +1,32 @@
+[package]
+name = "slog-json"
+version = "2.3.0"
+authors = ["Dawid Ciężarkiewicz <dpc@dpc.pw>"]
+description = "JSON drain for slog-rs"
+keywords = ["slog", "logging", "json"]
+license = "MPL-2.0"
+documentation = "https://docs.rs/slog-json"
+homepage = "https://github.com/slog-rs/slog"
+repository = "https://github.com/slog-rs/json"
+readme = "README.md"
+
+[lib]
+path = "lib.rs"
+
+[features]
+nested-values = ["erased-serde", "slog/nested-values"]
+dynamic-keys = ["slog/dynamic-keys"]
+default = []
+
+[dependencies]
+slog = { version = "2.1.1" }
+serde_json = "1"
+serde = "1"
+chrono = "0.4"
+erased-serde = {version = "0.3", optional = true }
+
+[dev-dependencies]
+slog-async = "2"
+
+[package.metadata.docs.rs]
+features = ["nested-values", "dynamic-keys"]

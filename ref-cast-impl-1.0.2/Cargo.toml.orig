@@ -1,0 +1,20 @@
+[package]
+name = "ref-cast-impl"
+version = "1.0.2"
+authors = ["David Tolnay <dtolnay@gmail.com>"]
+edition = "2018"
+license = "MIT OR Apache-2.0"
+description = "Derive implementation for ref_cast::RefCast."
+repository = "https://github.com/dtolnay/ref-cast"
+documentation = "https://docs.rs/ref-cast"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "1.0"
+quote = "1.0"
+syn = "1.0"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

@@ -1,0 +1,25 @@
+[package]
+authors = ["Alexandre Bury <alexandre.bury@gmail.com>"]
+name = "zstd-safe"
+version = "2.0.5+zstd.1.4.5"
+description = "Safe low-level bindings for the zstd compression library."
+keywords = ["zstd", "zstandard", "compression"]
+categories = ["api-bindings", "compression"]
+repository = "https://github.com/gyscos/zstd-rs"
+license = "MIT/Apache-2.0"
+readme = "Readme.md"
+
+[dependencies]
+zstd-sys = { path = "./zstd-sys", version = "=1.4.17", default-features = false }
+libc = "0.2.21"
+
+[features]
+default = ["legacy"]
+legacy = ["zstd-sys/legacy"]
+bindgen = ["zstd-sys/bindgen"]
+zstdmt = ["zstd-sys/zstdmt"]
+std = ["zstd-sys/std"] # Use std instead of libc types - useful on wasm.
+experimental = ["zstd-sys/experimental"]
+
+[package.metadata.docs.rs]
+features = ["experimental"]

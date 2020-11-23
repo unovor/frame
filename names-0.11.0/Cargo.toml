@@ -1,0 +1,23 @@
+[package]
+name = "names"
+version = "0.11.0"
+authors = ["Fletcher Nichol <fnichol@nichol.ca>"]
+license = "MIT"
+readme = "README.md"
+documentation = "http://fnichol.github.io/names/names/"
+repository = "https://github.com/fnichol/names.git"
+homepage = "https://github.com/fnichol/names.git"
+keywords = ["name", "random"]
+description = """
+A library to generate random name strings suitable for use in container
+instances, project names, application instances, etc.
+"""
+exclude = ["cli"]
+build = "build.rs"
+
+[lib]
+name = "names"
+path = "src/lib.rs"
+
+[dependencies]
+rand = "0.3.0"

@@ -1,0 +1,37 @@
+sudo: false
+
+language: rust
+
+addons:
+  apt:
+    packages:
+    - libcurl4-openssl-dev
+    - libelf-dev
+    - libdw-dev
+    - binutils-dev
+
+rust:
+- nightly
+- beta
+- stable
+
+before_script:
+- |
+  pip install 'travis-cargo<0.2' --user &&
+  export PATH=$HOME/.local/bin:$PATH
+
+script:
+- |
+  travis-cargo build &&
+  travis-cargo test &&
+  travis-cargo bench &&
+  travis-cargo --only stable doc
+
+after_success:
+- travis-cargo --only stable doc-upload
+- travis-cargo coveralls --no-sudo --verify
+
+env:
+  global:
+  - TRAVIS_CARGO_NIGHTLY_FEATURE=nightly
+  - secure: "m3OAFO6Zeyl4EFqBQxViTkxivWWt788FdiS4ZaIEkRbDWlbAGDy2TVNEKNFLJUQ3XgIQAjBL5ZNl6fjEz3AfZrsl8V0iozlTuIJMjDRBEn+Db1OJZME5vTlShYFw05ykr/oBS/hm1RegktmMVcGOEEmoRd33uSpSareAZa0NUC+36RbOzvsfTrSvGdLehMB+aIbf7AZ9qrX5DfGa/4PvOu1bJC/BOxCguT++WNTXPtf0pLDqJZHGth9kRn5K/zqK/34tx6xxznmQluT2aMVXZBgzIo/Vy3CFBKIBTmswtVKj+KKPRk5Y5yaatMuUZLaqk1vZLFvjKfwr1v4eYbk6z6LvS5/Q3JYmLtWGc2e4FR4XhkDZy8iY78VmiPe5/yhw1YzaC8Ye0H8N++DsDdc+PJabmusHoRuMs+fNuPiSbzXhTeclcNOwL6BjfUu3rw5Ut0b0XogPumoytLbT4RCSVNLTAZiMyZ3+/yEmpieT8DmsiiNuigX9SNet/NFLL8UMoyvOIMmPjYNJkNPjJ9sfLVFAX3Wh1r/TKCGu/pX1nMKuqYt8QGdIR0jYyrJvRo8ZMRxxueQHwdknthBM5jsVW/jyAG5+3fORdyfFzHVH6jbHU1q2AFOjMbJgaBhailXfjD/feGoRH4Ii9Vd0FEaYi9kQyIdyyMmtgaXCjE+P988="

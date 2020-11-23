@@ -1,0 +1,17 @@
+[package]
+name = "paste-impl"
+version = "0.1.18"
+authors = ["David Tolnay <dtolnay@gmail.com>"]
+edition = "2018"
+license = "MIT OR Apache-2.0"
+description = "Implementation detail of the `paste` crate"
+repository = "https://github.com/dtolnay/paste"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro-hack = "0.5"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

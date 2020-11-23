@@ -1,0 +1,25 @@
+[package]
+name = "futures-lite"
+version = "0.1.10"
+authors = [
+  "Stjepan Glavina <stjepang@gmail.com>",
+  "Contributors to futures-rs",
+]
+edition = "2018"
+description = "A lightweight async prelude"
+license = "Apache-2.0 OR MIT"
+repository = "https://github.com/stjepang/futures-lite"
+homepage = "https://github.com/stjepang/futures-lite"
+documentation = "https://docs.rs/futures-lite"
+keywords = ["asynchronous", "futures", "async"]
+categories = ["asynchronous", "concurrency"]
+readme = "README.md"
+
+[dependencies]
+fastrand = "1.3.3"
+futures-core = "0.3.5"
+futures-io = { version = "0.3.5", default-features = false, features = ["std"] }
+memchr = "2.3.3"
+parking = "1.0.5"
+pin-project-lite = "0.1.7"
+waker-fn = "1.0.0"

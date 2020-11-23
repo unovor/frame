@@ -1,0 +1,32 @@
+[package]
+name = "pwasm-utils"
+version = "0.14.0"
+authors = ["Nikolay Volf <nikvolf@gmail.com>", "Sergey Pepyakin <s.pepyakin@gmail.com>"]
+license = "MIT/Apache-2.0"
+readme = "README.md"
+description = "Collection of command-line utilities and corresponding Rust api for producing pwasm-compatible executables"
+keywords = ["wasm", "webassembly", "pwasm"]
+
+[dependencies]
+# If you add the feature "bulk", make sure you fixed all expects that say
+# "parity-wasm is compiled without bulk-memory operations"
+parity-wasm = { version = "0.41.0", default-features = false }
+log = { version = "0.4", default-features = false }
+byteorder = { version = "1", default-features = false }
+
+[dev-dependencies]
+tempdir = "0.3"
+wabt = "0.10"
+diff = "0.1.11"
+indoc = "0.3"
+rand = "0.7"
+binaryen = "0.8"
+
+[features]
+default = ["std"]
+std = ["parity-wasm/std", "log/std", "byteorder/std"]
+
+[workspace]
+members = [
+  "./cli",
+]

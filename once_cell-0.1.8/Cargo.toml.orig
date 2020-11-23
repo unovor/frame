@@ -1,0 +1,24 @@
+[package]
+name = "once_cell"
+version = "0.1.8"
+authors = ["Aleksey Kladov <aleksey.kladov@gmail.com>"]
+license = "MIT OR Apache-2.0"
+
+description = "Single assignment cells and lazy static values without macros."
+readme = "README.md"
+documentation = "https://docs.rs/once_cell"
+
+repository = "https://github.com/matklad/once_cell"
+keywords = ["lazy", "static"]
+categories = [ "rust-patterns", "memory-management" ]
+
+exclude = ["*.png", "*.svg"]
+
+[dependencies]
+parking_lot = { version = "0.7.1", optional = true, default_features = false }
+
+[features]
+default = [ "parking_lot" ]
+
+[dev-dependencies]
+crossbeam-utils = "0.6.0"

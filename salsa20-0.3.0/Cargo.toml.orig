@@ -1,0 +1,29 @@
+[package]
+name = "salsa20"
+version = "0.3.0"
+authors = ["RustCrypto Developers"]
+license = "MIT OR Apache-2.0"
+description = "Salsa20 Stream Cipher"
+repository = "https://github.com/RustCrypto/stream-ciphers"
+keywords = ["crypto", "stream-cipher", "trait", "xsalsa20"]
+categories = ["cryptography", "no-std"]
+readme = "README.md"
+
+[dependencies]
+byteorder = { version = "1", default-features = false }
+stream-cipher = "0.3"
+salsa20-core = { version = "0.2", path = "../salsa20-core"}
+
+[dev-dependencies]
+stream-cipher = { version = "0.3", features = ["dev"] }
+
+[features]
+default = ["xsalsa20"]
+zeroize = ["salsa20-core/zeroize"]
+xsalsa20 = []
+
+[badges]
+travis-ci = { repository = "RustCrypto/stream-ciphers" }
+
+[package.metadata.docs.rs]
+all-features = true

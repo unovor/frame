@@ -1,0 +1,11 @@
+# Ignore .DS_Store
+.DS_Store
+
+# Ignore project files
+.idea/
+asn1_der.iml
+asn1_der_derive/asn1_der_derive.iml
+
+# Ignore build results
+Cargo.lock
+target/

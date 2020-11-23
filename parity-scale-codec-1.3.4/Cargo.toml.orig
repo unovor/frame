@@ -1,0 +1,49 @@
+[package]
+name = "parity-scale-codec"
+description = "SCALE - Simple Concatenating Aggregated Little Endians"
+version = "1.3.4"
+authors = ["Parity Technologies <admin@parity.io>"]
+license = "Apache-2.0"
+repository = "https://github.com/paritytech/parity-scale-codec"
+categories = ["encoding"]
+edition = "2018"
+
+[dependencies]
+arrayvec = { version = "0.5.1", default-features = false, features = ["array-sizes-33-128", "array-sizes-129-255"] }
+serde = { version = "1.0.102", optional = true }
+parity-scale-codec-derive = { path = "derive", version = "^1.2.1", default-features = false, optional = true }
+bitvec = { version = "0.17.4", default-features = false, features = ["alloc"], optional = true }
+byte-slice-cast = { version = "0.3.4", default-features = false, features = ["alloc"] }
+generic-array = { version = "0.13.2", optional = true }
+
+[dev-dependencies]
+criterion = "0.3.0"
+serde_derive = { version = "1.0" }
+parity-scale-codec-derive = { path = "derive", version = "^1.2.1", default-features = false }
+quickcheck = "0.9"
+
+[[bench]]
+name = "benches"
+harness = false
+
+[lib]
+bench = false
+
+[features]
+default = ["std"]
+derive = ["parity-scale-codec-derive"]
+std = ["serde", "bitvec/std", "byte-slice-cast/std"]
+bit-vec = ["bitvec"]
+
+# WARNING: DO _NOT_ USE THIS FEATURE IF YOU ARE WORKING ON CONSENSUS CODE!*
+#
+# Provides implementations for more data structures than just Vec and Box.
+# Concretely it will provide parity-scale-codec implementations for many types
+# that can be found in std and/or alloc.
+full = []
+
+[workspace]
+members = [
+	"derive",
+	"fuzzer",
+]

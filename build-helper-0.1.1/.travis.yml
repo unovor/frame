@@ -1,0 +1,20 @@
+language: rust
+rust:
+  - 1.13.0
+  - 1.16.0
+  - stable
+  - beta
+  - nightly
+script: >
+  cargo build $TEST_CARGO_FLAGS --features "$TEST_CARGO_FEATURES"
+  && cargo test $TEST_CARGO_FLAGS --features "$TEST_CARGO_FEATURES"
+env:
+  - >
+    TEST_CARGO_FLAGS="--verbose --no-default-features"
+    TEST_CARGO_FEATURES=
+matrix:
+  allow_failures:
+    - rust: nightly
+  include:
+    - rust: nightly
+      env: TEST_CARGO_FEATURES=nightly
